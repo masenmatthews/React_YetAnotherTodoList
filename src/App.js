@@ -31,6 +31,9 @@ class App extends Component {
   // delete todo
   // ... operator basically copies everything that is already there. Filter basically says that we want filter out the task that we're deleting
   delTodo = (id) => {
+    // backticks `` included to bring in id
+    axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
+      .then(res => this.setState({ todos: [...this.state.todos.filter(todo => todo.id !== id)] }));
     this.setState({ todos: [...this.state.todos.filter(todo => todo.id !== id)] });
   }
 
